@@ -15,8 +15,8 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
 
   const navItems = {
-    es: ["Inicio", "Aparts", "Servicios", "Galería", "Contacto"],
-    en: ["Home", "Apartments", "Services", "Gallery", "Contact"],
+    es: ["Inicio", "Servicios", "Galería", "Contacto"],
+    en: ["Home", "Services", "Gallery", "Contact"],
   }
 
   const whatsappNumber = "542966408560"
@@ -24,7 +24,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
     language === "es" ? "Hola, quisiera consultar disponibilidad en La Farfalla" : "Hello, I would like to check availability at La Farfalla"
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[50000000000] bg-navbar border-b border-navbar-border shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-[50000000000] bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="shrink-0">
@@ -40,7 +40,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems[language].map((item) => (
-              <a key={item} href="#" className="text-sm font-medium text-white hover:text-white/80 transition-colors">
+              <a key={item} href="#" className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
                 {item}
               </a>
             ))}
@@ -50,7 +50,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
           <div className="hidden md:flex items-center gap-4">
             {/* Language Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-white/80 transition-colors">
+              <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
                 {language === "es" ? "ES" : "EN"}
                 <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
               </button>
@@ -73,7 +73,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
                 </button>
               </div>
             </div>
-            <Button asChild className="bg-white text-navbar hover:bg-gray-100">
+            <Button asChild className="bg-primary text-white hover:bg-primary/90">
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                 target="_blank"
@@ -89,7 +89,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
             <div className="relative">
               <button
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white"
+                className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-gray-900"
               >
                 <Globe className="w-3 h-3" />
                 {language === "es" ? "ES" : "EN"}
@@ -122,7 +122,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
                 </div>
               )}
             </div>
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-white">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-gray-900">
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
@@ -130,14 +130,14 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-navbar-border py-4">
+          <div className="md:hidden border-t border-gray-200 py-4">
             <div className="flex flex-col gap-4">
               {navItems[language].map((item) => (
-                <a key={item} href="#" className="text-sm font-medium text-white hover:text-white/80">
+                <a key={item} href="#" className="text-sm font-medium text-gray-900 hover:text-gray-600">
                   {item}
                 </a>
               ))}
-              <Button asChild className="bg-white text-navbar hover:bg-gray-100 w-full">
+              <Button asChild className="bg-primary text-white hover:bg-primary/90 w-full">
                 <a
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                   target="_blank"

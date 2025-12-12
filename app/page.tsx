@@ -6,6 +6,7 @@ import { HeroSection } from "@/components/hero-section"
 import { BookingModal } from "@/components/booking-modal"
 import { IntroSection } from "@/components/intro-section"
 import { BenefitsSection } from "@/components/benefits-section"
+import { ElBarrancoSection } from "@/components/el-barranco-section"
 import { GallerySection } from "@/components/gallery-section"
 import { CtaSection } from "@/components/cta-section"
 import { Footer } from "@/components/footer"
@@ -22,6 +23,7 @@ export default function Home() {
         <BookingModal language={language} />
         <IntroSection language={language} />
         <BenefitsSection language={language} />
+        <ElBarrancoSection language={language} />
         <GallerySection language={language} />
         <CtaSection language={language} />
       </main>

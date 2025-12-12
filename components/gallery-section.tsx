@@ -79,7 +79,7 @@ export function GallerySection({ language }: GallerySectionProps) {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {imagesToShow.map((imageSrc, index) => (
+          {galleryImages.map((imageSrc, index) => (
             <button
               key={index}
               onClick={() => setSelectedImage(index)}
@@ -95,27 +95,6 @@ export function GallerySection({ language }: GallerySectionProps) {
             </button>
           ))}
         </div>
-
-        {/* Show More/Less Button */}
-        {galleryImages.length > 12 && (
-          <div className="text-center mt-8">
-            {!showAll ? (
-              <button
-                onClick={handleShowMore}
-                className="inline-flex items-center px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-colors"
-              >
-                {content[language].showMore} ({galleryImages.length - 12} más)
-              </button>
-            ) : (
-              <button
-                onClick={handleShowLess}
-                className="inline-flex items-center px-6 py-3 bg-gray-600 text-white font-medium rounded-lg hover:bg-gray-700 transition-colors"
-              >
-                {content[language].showLess}
-              </button>
-            )}
-          </div>
-        )}
       </div>
 
       {/* Lightbox/Carousel Modal */}
