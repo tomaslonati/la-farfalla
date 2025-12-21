@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Menu, X, ChevronDown, Globe } from "lucide-react"
+import { FaWhatsapp } from "react-icons/fa"
 import { useState } from "react"
 import Image from "next/image"
 
@@ -78,7 +79,9 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="flex items-center gap-2"
               >
+                <FaWhatsapp className="w-4 h-4" />
                 {language === "es" ? "Reservar" : "Book Now"}
               </a>
             </Button>
@@ -142,7 +145,9 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex items-center justify-center gap-2"
                 >
+                  <FaWhatsapp className="w-4 h-4" />
                   {language === "es" ? "Reservar" : "Book Now"}
                 </a>
               </Button>
