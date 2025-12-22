@@ -81,7 +81,7 @@ export function BenefitsSection({ language }: BenefitsSectionProps) {
   }
 
   return (
-    <section className="py-16 md:py-20 px-4" style={{ backgroundColor: '#18682D' }}>
+    <section id="services" className="py-16 md:py-20 px-4" style={{ backgroundColor: '#18682D' }}>
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{content[language].title}</h2>

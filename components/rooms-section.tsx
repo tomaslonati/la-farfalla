@@ -3,7 +3,8 @@
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Users, ChevronLeft, ChevronRight, Bed, X } from "lucide-react"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
+import { FaWhatsapp } from "react-icons/fa"
 import Image from "next/image"
 
 interface RoomsSectionProps {
@@ -186,6 +187,10 @@ function RoomCard({
 }
 
 export function RoomsSection({ language }: RoomsSectionProps) {
+  const [activeRoomId, setActiveRoomId] = useState<string>("cuadruple")
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
+  const buttonsRef = useRef<Map<string, HTMLButtonElement>>(new Map())
+
   const content = {
     es: {
       title: "Nuestras Habitaciones y Cabañas",
@@ -307,6 +312,59 @@ export function RoomsSection({ language }: RoomsSectionProps) {
     },
   }
 
+  const roomsList = (content[language].rooms || []).map((room) => {
+    const imageKey = room.imageKey
+    const firstImage = roomImages[imageKey]?.[0] || "/placeholder.svg"
+    return {
+      id: imageKey,
+      label: room.name,
+      description: room.description,
+      image: firstImage,
+    }
+  })
+
+  const currentMobileRoom = roomsList.find((r) => r.id === activeRoomId) || roomsList[0]
+
+  useEffect(() => {
+    const activeButton = buttonsRef.current.get(activeRoomId)
+    const container = scrollContainerRef.current
+
+    if (activeButton && container) {
+      const buttonRect = activeButton.getBoundingClientRect()
+      const containerRect = container.getBoundingClientRect()
+
+      const scrollLeft = container.scrollLeft
+      const buttonLeft = buttonRect.left - containerRect.left + scrollLeft
+      const buttonWidth = buttonRect.width
+      const containerWidth = containerRect.width
+
+      const targetScroll = buttonLeft - containerWidth / 2 + buttonWidth / 2
+
+      container.scrollTo({ left: targetScroll, behavior: "smooth" })
+    }
+  }, [activeRoomId])
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveRoomId((currentId) => {
+        const idx = roomsList.findIndex((r) => r.id === currentId)
+        const nextIdx = (idx + 1) % roomsList.length
+        return roomsList[nextIdx]?.id ?? currentId
+      })
+    }, 5000)
+
+    return () => clearInterval(interval)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const whatsappNumber = "5492966762332"
+  const mobileWhatsappMessage = encodeURIComponent(
+    language === "es"
+      ? `Hola, me gustaría reservar la ${currentMobileRoom?.label} para...`
+      : `Hello, I would like to reserve the ${currentMobileRoom?.label} for...`
+  )
+  const mobileWhatsappLink = `https://wa.me/${whatsappNumber}?text=${mobileWhatsappMessage}`
+
   return (
     <section id="rooms-section" className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
@@ -315,7 +373,65 @@ export function RoomsSection({ language }: RoomsSectionProps) {
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">{content[language].subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Mobile view: single active room with horizontal selector */}
+        <div className="md:hidden">
+          <div className="relative h-[300px] sm:h-[350px] rounded-lg overflow-hidden bg-gray-100 shadow-lg">
+            {currentMobileRoom && (
+              <Image
+                src={currentMobileRoom.image}
+                alt={currentMobileRoom.label}
+                fill
+                className="object-cover"
+              />
+            )}
+          </div>
+
+          <div className="bg-white mt-2 rounded-lg shadow-sm">
+            <div
+              ref={scrollContainerRef}
+              className="flex gap-1 overflow-x-auto pb-2 scroll-smooth"
+            >
+              {roomsList.map((room) => (
+                <button
+                  ref={(el) => {
+                    if (el) buttonsRef.current.set(room.id, el)
+                  }}
+                  key={room.id}
+                  onClick={() => setActiveRoomId(room.id)}
+                  type="button"
+                  className={`flex-shrink-0 p-2 text-center rounded-lg transition-all duration-300 cursor-pointer text-xs min-w-[140px] ${
+                    activeRoomId === room.id ? "text-black" : "text-[#8B8B8B]"
+                  }`}
+                  style={{ fontWeight: activeRoomId === room.id ? 800 : 900, lineHeight: "1.3" }}
+                >
+                  <div className="leading-tight uppercase">{room.label}</div>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="bg-white px-2 py-4 rounded-lg shadow-sm">
+            {currentMobileRoom && (
+              <>
+                <p className="text-gray-700 mb-4 text-sm" style={{ fontWeight: 300, lineHeight: "1.4" }}>
+                  {currentMobileRoom.description}
+                </p>
+                <a
+                  href={mobileWhatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-[80px] font-medium transition-colors text-sm flex items-center justify-center gap-2"
+                >
+                  <FaWhatsapp className="w-4 h-4" />
+                  {language === "es" ? "RESERVAR" : "RESERVE"}
+                </a>
+              </>
+            )}
+          </div>
+        </div>
+
+        {/* Desktop grid remains unchanged */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {content[language].rooms.map((room, index) => (
             <RoomCard key={index} room={room} language={language} images={roomImages[room.imageKey]} />
           ))}

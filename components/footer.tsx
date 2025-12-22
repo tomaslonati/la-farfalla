@@ -43,7 +43,7 @@ export function Footer({ language }: FooterProps) {
   }
 
   return (
-    <footer className="bg-white text-gray-800 py-12 px-4 border-t border-gray-200">
+    <footer id="contact" className="bg-white text-gray-800 py-12 px-4 border-t border-gray-200">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
           <h3 className="font-bold text-lg mb-4 text-gray-900">{content[language].location}</h3>

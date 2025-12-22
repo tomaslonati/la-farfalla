@@ -15,9 +15,19 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false)
 
-  const navItems = {
-    es: ["Inicio", "Servicios", "Galería", "Contacto"],
-    en: ["Home", "Services", "Gallery", "Contact"],
+  const navLinks = {
+    es: [
+      { label: "Inicio", href: "#hero" },
+      { label: "Servicios", href: "#services" },
+      { label: "Galería", href: "#gallery" },
+      { label: "Contacto", href: "#contact" },
+    ],
+    en: [
+      { label: "Home", href: "#hero" },
+      { label: "Services", href: "#services" },
+      { label: "Gallery", href: "#gallery" },
+      { label: "Contact", href: "#contact" },
+    ],
   }
 
   const whatsappNumber = "542966408560"
@@ -40,9 +50,13 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navItems[language].map((item) => (
-              <a key={item} href="#" className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
-                {item}
+            {navLinks[language].map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+              >
+                {item.label}
               </a>
             ))}
           </div>
@@ -135,9 +149,14 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
         {mobileMenuOpen && (
           <div className="md:hidden border-t border-gray-200 py-4">
             <div className="flex flex-col gap-4">
-              {navItems[language].map((item) => (
-                <a key={item} href="#" className="text-sm font-medium text-gray-900 hover:text-gray-600">
-                  {item}
+              {navLinks[language].map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-sm font-medium text-gray-900 hover:text-gray-600"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
                 </a>
               ))}
               <Button asChild className="bg-primary text-white hover:bg-primary/90 w-full">

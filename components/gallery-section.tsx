@@ -70,7 +70,7 @@ export function GallerySection({ language }: GallerySectionProps) {
   const imagesToShow = galleryImages.slice(0, visibleImages)
 
   return (
-    <section className="py-20 px-4 bg-gray-50">
+    <section id="gallery" className="py-20 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content[language].title}</h2>

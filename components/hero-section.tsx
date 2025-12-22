@@ -22,7 +22,7 @@ export function HeroSection({ language }: HeroSectionProps) {
   }, [])
 
   return (
-    <section className="relative h-[90vh] flex flex-col justify-end pt-20 md:pt-20">
+    <section id="hero" className="relative h-[90vh] flex flex-col justify-end pt-20 md:pt-20">
       {/* Background images with zoom effect - matching hero height */}
       <div className="absolute inset-0 h-full overflow-hidden">
         {heroImages.map((image, index) => (
