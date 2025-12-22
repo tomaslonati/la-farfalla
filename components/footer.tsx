@@ -73,7 +73,7 @@ export function Footer({ language }: FooterProps) {
 
           <div className="w-full h-64 rounded-lg overflow-hidden border border-gray-200">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2600.4!2d-72.885!3d-49.330!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sLa%20Farfalla%20Apartment!5e0!3m2!1ses!2sar!4v1234567890!5m2!1ses!2sar"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2600.1604520028877!2d-72.8892515231114!3d-49.330180975411125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbdbd03fead81d66f%3A0x83cc2673eabdf2c4!2sAparts%20La%20Farfalla!5e0!3m2!1ses!2sar!4v1766441027796!5m2!1ses!2sar"
               width="100%"
               height="100%"
               style={{ border: 0 }}
