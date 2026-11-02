@@ -7,8 +7,8 @@ interface HeroSectionProps {
 }
 
 const heroImages = [
-  "/images/20221023_take01_1500x1200.jpg",
-  "/images/20221023_take02_1500x1200.jpg",
+  "/images/galeria/20221023_take01_1500x1200.jpg",
+  "/images/galeria/20221023_take02_1500x1200.jpg",
 ]
 
 export function HeroSection({ language }: HeroSectionProps) {

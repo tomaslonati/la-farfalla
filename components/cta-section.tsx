@@ -32,7 +32,7 @@ export function CtaSection({ language }: CtaSectionProps) {
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
   return (
-    <section className="py-16 md:py-20 px-4 bg-gray-600">
+    <section className="py-16 md:py-20 px-4 bg-primary">
       <div className="max-w-4xl mx-auto text-center">
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">
           {t.title}

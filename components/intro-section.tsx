@@ -34,7 +34,7 @@ export function IntroSection({ language }: IntroSectionProps) {
         <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
           {/* Text Content */}
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 ">{t.title}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary">{t.title}</h2>
             <div className="space-y-4 text-gray-700 leading-relaxed">
               <p className="text-base">{t.description1}</p>
               <p className="text-base">{t.description2}</p>
@@ -46,7 +46,7 @@ export function IntroSection({ language }: IntroSectionProps) {
           <div className="relative">
             <div className="aspect-[4/3] rounded-lg overflow-hidden">
               <img 
-                src="/images/20221023_take05_1500x1200.jpg"
+                src="/images/galeria/20221023_take05_1500x1200.jpg"
                 alt={language === "es" ? "Aparts La Farfalla - Vista exterior" : "Aparts La Farfalla - Exterior view"}
                 className="w-full h-full object-cover"
               />

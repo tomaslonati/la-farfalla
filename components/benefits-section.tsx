@@ -99,7 +99,7 @@ export function BenefitsSection({ language }: BenefitsSectionProps) {
                 <div className="w-12 h-12 rounded-full bg-primary/5 flex items-center justify-center mb-4">
                   <Icon className="h-6 w-6 text-primary" />
                 </div>
-                <h3 className="text-base font-medium text-gray-900 mb-2">{benefit.title}</h3>
+                <h3 className="text-base font-medium text-primary mb-2">{benefit.title}</h3>
                 <p className="text-gray-600 text-sm leading-relaxed">{benefit.description}</p>
               </div>
             )

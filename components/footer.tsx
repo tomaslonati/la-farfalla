@@ -13,7 +13,7 @@ export function Footer({ language }: FooterProps) {
       contact: "Contacto",
       address: "Av San Martín 84, El Chaltén, Santa Cruz, Argentina",
       phone: "+54 2966 40 8560",
-      email: "info@lafarfalla.com",
+      email: "lafarfallachalten@yahoo.com",
       quickLinks: "Enlaces Rápidos",
       links: ["Inicio", "Aparts", "Servicios", "Galería", "Contacto"],
       followUs: "Síguenos",
@@ -21,6 +21,7 @@ export function Footer({ language }: FooterProps) {
       downloadMaps: "Descargar Mapas",
       trailsMap: "Mapa de Senderos",
       townMap: "Mapa del Pueblo",
+      openMaps: "Ver en Google Maps",
       rights: "Todos los derechos reservados",
     },
     en: {
@@ -30,7 +31,7 @@ export function Footer({ language }: FooterProps) {
       contact: "Contact",
       address: "Av San Martín 84, El Chaltén, Santa Cruz, Argentina",
       phone: "+54 2966 40 8560",
-      email: "info@lafarfalla.com",
+      email: "lafarfallachalten@yahoo.com",
       quickLinks: "Quick Links",
       links: ["Home", "Apartments", "Services", "Gallery", "Contact"],
       followUs: "Follow Us",
@@ -38,6 +39,7 @@ export function Footer({ language }: FooterProps) {
       downloadMaps: "Download Maps",
       trailsMap: "Trails Map",
       townMap: "Town Map",
+      openMaps: "View on Google Maps",
       rights: "All rights reserved",
     },
   }
@@ -82,13 +84,22 @@ export function Footer({ language }: FooterProps) {
               referrerPolicy="no-referrer-when-downgrade"
             />
           </div>
+          <a
+            href="https://www.google.com/maps/search/?api=1&query=Aparts%20La%20Farfalla%2C%20Av%20San%20Mart%C3%ADn%2084%2C%20El%20Chalt%C3%A9n%2C%20Santa%20Cruz"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 inline-flex items-center gap-2 text-sm text-primary font-medium hover:underline"
+          >
+            <MapPin className="h-4 w-4" />
+            {content[language].openMaps}
+          </a>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
           {/* About */}
           <div>
             <div className="mb-4">
-              <img src="/green-logo.png" alt="Aparts La Farfalla" className="h-12 w-auto" />
+              <img src="/green-logo.png" alt="Aparts La Farfalla" className="h-20 w-auto" />
             </div>
             <h3 className="font-bold text-lg mb-3 text-gray-900">{content[language].about}</h3>
             <p className="text-gray-600 text-sm leading-relaxed">{content[language].aboutText}</p>

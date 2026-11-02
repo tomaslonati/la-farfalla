@@ -3,29 +3,31 @@
 import { useState } from "react"
 import { X, ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
+import { useFolderImages } from "@/lib/use-folder-images"
 
 interface GallerySectionProps {
   language: "es" | "en"
 }
 
-const galleryImages = [
-  // Imágenes de La Farfalla
-  "/images/20221023_take01_1500x1200.jpg",
-  "/images/20221023_take02_1500x1200.jpg",
-  "/images/20221023_take05_1500x1200.jpg",
-  "/images/20221023_take08_1500x1200.jpg",
-  "/images/20221023_take09_1500x1200.jpg",
-  "/images/20221023_take12_1200x1500.jpg",
-  "/images/20221023_take13_1500x1200.jpg",
-  "/images/20221023_take14_1500x1200.jpg",
-  "/images/20221023_take17_1500x1200.jpg",
-  "/images/20221023_take18_1500x1200.jpg",
-  "/images/621c1a69-3723-4b6f-b3d8-eafe17ac9ea5.jpg",
-  "/images/6a3c21bf-bd21-4aee-b266-7520c3db6e6a.jpg",
-  "/images/737f3379-fee2-4aea-ac43-de60b6af9c48.jpg",
+// Respaldo para desarrollo: en el hosting la lista sale de /fotos.php
+const fallbackImages = [
+  "/images/galeria/6a3c21bf-bd21-4aee-b266-7520c3db6e6a.jpg",
+  "/images/galeria/621c1a69-3723-4b6f-b3d8-eafe17ac9ea5.jpg",
+  "/images/galeria/737f3379-fee2-4aea-ac43-de60b6af9c48.jpg",
+  "/images/galeria/20221023_take01_1500x1200.jpg",
+  "/images/galeria/20221023_take02_1500x1200.jpg",
+  "/images/galeria/20221023_take05_1500x1200.jpg",
+  "/images/galeria/20221023_take08_1500x1200.jpg",
+  "/images/galeria/20221023_take09_1500x1200.jpg",
+  "/images/galeria/20221023_take12_1200x1500.jpg",
+  "/images/galeria/20221023_take13_1500x1200.jpg",
+  "/images/galeria/20221023_take14_1500x1200.jpg",
+  "/images/galeria/20221023_take17_1500x1200.jpg",
+  "/images/galeria/20221023_take18_1500x1200.jpg",
 ]
 
 export function GallerySection({ language }: GallerySectionProps) {
+  const galleryImages = useFolderImages("galeria", fallbackImages)
   const [selectedImage, setSelectedImage] = useState<number | null>(null)
   const [visibleImages, setVisibleImages] = useState<number>(12)
   const [showAll, setShowAll] = useState<boolean>(false)
@@ -73,7 +75,7 @@ export function GallerySection({ language }: GallerySectionProps) {
     <section id="gallery" className="py-20 px-4 bg-gray-50">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">{content[language].title}</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">{content[language].title}</h2>
           <p className="text-lg text-gray-600">{content[language].subtitle}</p>
         </div>
 

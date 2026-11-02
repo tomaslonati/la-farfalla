@@ -69,7 +69,7 @@ export function ElBarrancoSection({ language }: ElBarrancoSectionProps) {
             {/* Content */}
             <div className="space-y-4">
               <div>
-                <h2 className="text-2xl md:text-3xl font-light text-gray-900 mb-2 tracking-tight">{content[language].title}</h2>
+                <h2 className="text-2xl md:text-3xl font-light text-primary mb-2 tracking-tight">{content[language].title}</h2>
                 <p className="text-xl md:text-2xl font-medium text-primary mb-3">{content[language].subtitle}</p>
                 <p className="text-sm text-gray-600 leading-relaxed">{content[language].description}</p>
               </div>

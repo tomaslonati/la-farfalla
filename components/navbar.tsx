@@ -35,16 +35,16 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
     language === "es" ? "Hola, quisiera consultar disponibilidad en La Farfalla" : "Hello, I would like to check availability at La Farfalla"
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[50000000000] bg-white border-b border-gray-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-[50000000000] bg-navbar border-b border-navbar-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+        <div className="flex justify-between items-center h-24 md:h-28">
           <div className="shrink-0">
             <Image 
-              src="/white-logo.png" 
+              src="/green-logo.png" 
               alt="Aparts La Farfalla" 
               width={200} 
               height={80} 
-              className="h-16 w-auto" 
+              className="h-24 md:h-28 w-auto" 
             />
           </div>
 
@@ -54,7 +54,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
               <a
                 key={item.label}
                 href={item.href}
-                className="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors"
+                className="text-sm font-medium text-white hover:text-white/80 transition-colors"
               >
                 {item.label}
               </a>
@@ -65,7 +65,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
           <div className="hidden md:flex items-center gap-4">
             {/* Language Dropdown */}
             <div className="relative group">
-              <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+              <button className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-white hover:text-white/80 transition-colors">
                 {language === "es" ? "ES" : "EN"}
                 <ChevronDown className="w-3 h-3 group-hover:rotate-180 transition-transform duration-200" />
               </button>
@@ -88,7 +88,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
                 </button>
               </div>
             </div>
-            <Button asChild className="bg-primary text-white hover:bg-primary/90">
+            <Button asChild className="bg-white text-navbar hover:bg-gray-100">
               <a
                 href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                 target="_blank"
@@ -106,7 +106,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
             <div className="relative">
               <button
                 onClick={() => setLanguageDropdownOpen(!languageDropdownOpen)}
-                className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-gray-900"
+                className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white"
               >
                 <Globe className="w-3 h-3" />
                 {language === "es" ? "ES" : "EN"}
@@ -139,7 +139,7 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
                 </div>
               )}
             </div>
-            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-gray-900">
+            <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="p-2 text-white">
               {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
           </div>
@@ -147,19 +147,19 @@ export function Navbar({ language, onLanguageChange }: NavbarProps) {
 
         {/* Mobile menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden border-t border-gray-200 py-4">
+          <div className="md:hidden border-t border-navbar-border py-4">
             <div className="flex flex-col gap-4">
               {navLinks[language].map((item) => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-sm font-medium text-gray-900 hover:text-gray-600"
+                  className="text-sm font-medium text-white hover:text-white/80"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
-              <Button asChild className="bg-primary text-white hover:bg-primary/90 w-full">
+              <Button asChild className="bg-white text-navbar hover:bg-gray-100 w-full">
                 <a
                   href={`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`}
                   target="_blank"
