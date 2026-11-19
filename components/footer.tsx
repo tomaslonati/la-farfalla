@@ -1,4 +1,5 @@
 import { MapPin, Phone, Mail, Facebook, Instagram, Download } from "lucide-react"
+import { ElBarrancoSection } from "@/components/el-barranco-section"
 
 interface FooterProps {
   language: "es" | "en"
@@ -93,6 +94,8 @@ export function Footer({ language }: FooterProps) {
             <MapPin className="h-4 w-4" />
             {content[language].openMaps}
           </a>
+
+          <ElBarrancoSection language={language} />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">

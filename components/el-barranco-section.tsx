@@ -33,7 +33,7 @@ export function ElBarrancoSection({ language }: ElBarrancoSectionProps) {
   }
 
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <section className="mt-10">
       <a 
         href="https://www.posadaelbarranco.com.ar" 
         target="_blank" 
@@ -56,13 +56,6 @@ export function ElBarrancoSection({ language }: ElBarrancoSectionProps) {
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
-                onError={(e) => {
-                  console.log("Error loading El Barranco image")
-                }}
-                onLoad={() => {
-                  console.log("El Barranco image loaded successfully")
-                }}
-                priority
               />
             </div>
 
